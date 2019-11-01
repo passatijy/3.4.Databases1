@@ -21,6 +21,7 @@ import phones.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', phones.views.show_catalog),
     path('catalog/', phones.views.show_catalog),
     url(r'^catalog/(?P<slug>[\w-]+)/$', phones.views.show_product),
 ]

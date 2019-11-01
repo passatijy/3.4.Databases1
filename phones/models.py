@@ -16,5 +16,5 @@ class Phone(models.Model):
         return f'{self.phone_name}'
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.phone_name)
+        self.phone_n_slug = slugify(self.phone_name)
         super(Phone, self).save(*args, **kwargs)

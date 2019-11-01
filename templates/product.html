@@ -8,7 +8,15 @@
             <h1>Телефон</h1>
         </div>
         <div class="content">
-
+            <div>PhoneName:{{ phone_name }}</div>
+            <div>PhonePrice:{{ phone_price }}</div>
+            <a href="/catalog/{{ phone_n_slug }}">
+            <img src="{{ phone_image }}" height="200">
+            </a>
+        {% if phone_lte_exists %}
+        <p> Phone LTE EXISTS </p>
+        {% endif %}
         </div>
     </div>
+    <a href="/catalog/">Go Back to catalog</a>
 {% endblock %}

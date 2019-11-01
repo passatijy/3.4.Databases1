@@ -6,6 +6,8 @@
     <div class="container">
         <div class="header">
             <h1><a href="/catalog">Каталог</a></h1>
+            <p><a href="/catalog?sort=price">sort by price </a></p>
+            <p><a href="/catalog?sort=name">sort by name </a></p>
                 {% for n in allphones %}
                     <div>PhoneName:{{ n.phone_name }}</div>
                     <div>PhonePrice:{{ n.phone_price }}</div>

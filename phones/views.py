@@ -1,8 +1,16 @@
 from django.shortcuts import render
 from phones.models import Phone
+import operator
 
 def show_catalog(request):
-    all_phones = Phone.objects.all()
+    request_arg = request.GET.get('sort')
+    if request_arg == 'price':
+        all_phones = Phone.objects.all().order_by('-phone_price')
+    else:
+        if request_arg == 'name':
+            all_phones = Phone.objects.all().order_by('phone_name')
+        else:
+            all_phones = Phone.objects.all()
     phone_context = []
     for k in all_phones:
         print(k.phone_name, k.phone_image, k.phone_price)
@@ -13,11 +21,15 @@ def show_catalog(request):
     print(phone_context)
     template = 'catalog.html'
     context = {'allphones': phone_context}
-    #context = {'phone_id_0': {'phone_name': phone_name, 'phone_image': phone_image, 'phone_price': phone_price, 'phone_n_slug': phone_n_slug}}
     return render(request, template, context)
 
 
 def show_product(request, slug):
     template = 'product.html'
-    context = {}
+    phone_data = Phone.objects.get(phone_n_slug=slug)
+    print(phone_data)
+    context = {'phone_name': phone_data.phone_name,
+                    'phone_image': phone_data.phone_image,
+                    'phone_price': phone_data.phone_price,
+                    'phone_lte_exists': phone_data.phone_lte_exists}
     return render(request, template, context)
