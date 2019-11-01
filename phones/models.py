@@ -6,9 +6,10 @@ class Phone(models.Model):
     # TODO: Добавьте требуемые поля
     phone_id = models.DecimalField(max_digits=10,decimal_places=2,primary_key=True)
     phone_name = models.CharField(max_length=50, default='')
-    phone_link = models.CharField(max_length=50)
+    phone_image = models.CharField(max_length=50)
     phone_price = models.DecimalField(max_digits=10,decimal_places=2)
-    phone_data = models.DateTimeField(auto_now=False, null=True, blank=True)
+    phone_release_date = models.DateTimeField(auto_now=False, null=True, blank=True)
+    phone_lte_exists = models.BooleanField(blank=True)
     phone_n_slug = models.SlugField(null=True, blank=True)
 
     def __str__(self):
