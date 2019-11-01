@@ -29,5 +29,6 @@ class Command(BaseCommand):
                                    phone_price=line[3],
                                    phone_release_date=pytz.utc.localize(mydate),
                                    phone_lte_exists=bool(line[5]))
+                                   #phone_n_slug=)
                 temp_phone.save()
 

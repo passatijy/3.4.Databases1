@@ -6,6 +6,13 @@
     <div class="container">
         <div class="header">
             <h1><a href="/catalog">Каталог</a></h1>
+                {% for n in allphones %}
+                    <div>PhoneName:{{ n.phone_name }}</div>
+                    <div>PhonePrice:{{ n.phone_price }}</div>
+            <a href="/catalog/{{ n.phone_n_slug }}">
+            <img src="{{ n.phone_image }}" height="200">
+            </a>
+                {% endfor %}
         </div>
 
         <div class="sort-block">
